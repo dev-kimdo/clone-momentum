@@ -12,8 +12,9 @@ function saveToDos() {
 
 function deleteToDo (event) {
     const li = event.target.parentElement;
-    console.log(li.id);
     li.remove();
+    toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id));
+    saveToDos();
 }
 
 function paintToDo(newToDo){
@@ -51,4 +52,4 @@ if(savedToDos !== null) {
     const parseToDos = JSON.parse(savedToDos);
     toDos = parseToDos;
     parseToDos.forEach(paintToDo);
-};
+}
